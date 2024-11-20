@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CKD Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>CKD Prediction</h1>
+        <form action="/predict" method="post">
+            <!-- Input fields for all features -->
+            <div class="form-group">
+                <label for="Glucose">Glucose:</label>
+                <input type="number" name="Glucose" placeholder="Enter Glucose level" required step="any" value="{{ form_data['Glucose'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="Cholesterol">Cholesterol:</label>
+                <input type="number" name="Cholesterol" placeholder="Enter Cholesterol level" required step="any" value="{{ form_data['Cholesterol'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="Hemoglobin">Hemoglobin:</label>
+                <input type="number" name="Hemoglobin" placeholder="Enter Hemoglobin level" required step="any" value="{{ form_data['Hemoglobin'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="Platelets">Platelets:</label>
+                <input type="number" name="Platelets" placeholder="Enter Platelets count" required step="any" value="{{ form_data['Platelets'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="WhiteBloodCells">White Blood Cells:</label>
+                <input type="number" name="WhiteBloodCells" placeholder="Enter White Blood Cells count" required step="any" value="{{ form_data['WhiteBloodCells'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="RedBloodCells">Red Blood Cells:</label>
+                <input type="number" name="RedBloodCells" placeholder="Enter Red Blood Cells count" required step="any" value="{{ form_data['RedBloodCells'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="Hematocrit">Hematocrit:</label>
+                <input type="number" name="Hematocrit" placeholder="Enter Hematocrit level" required step="any" value="{{ form_data['Hematocrit'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="MeanCorpuscularVolume">Mean Corpuscular Volume:</label>
+                <input type="number" name="MeanCorpuscularVolume" placeholder="Enter Mean Corpuscular Volume" required step="any" value="{{ form_data['MeanCorpuscularVolume'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="MeanCorpuscularHemoglobin">Mean Corpuscular Hemoglobin:</label>
+                <input type="number" name="MeanCorpuscularHemoglobin" placeholder="Enter Mean Corpuscular Hemoglobin" required step="any" value="{{ form_data['MeanCorpuscularHemoglobin'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="MeanCorpuscularHemoglobinConcentration">Mean Corpuscular Hemoglobin Concentration:</label>
+                <input type="number" name="MeanCorpuscularHemoglobinConcentration" placeholder="Enter Mean Corpuscular Hemoglobin Concentration" required step="any" value="{{ form_data['MeanCorpuscularHemoglobinConcentration'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="Insulin">Insulin:</label>
+                <input type="number" name="Insulin" placeholder="Enter Insulin level" required step="any" value="{{ form_data['Insulin'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="BMI">BMI:</label>
+                <input type="number" name="BMI" placeholder="Enter BMI" required step="any" value="{{ form_data['BMI'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="SystolicBloodPressure">Systolic Blood Pressure:</label>
+                <input type="number" name="SystolicBloodPressure" placeholder="Enter Systolic Blood Pressure" required step="any" value="{{ form_data['SystolicBloodPressure'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="DiastolicBloodPressure">Diastolic Blood Pressure:</label>
+                <input type="number" name="DiastolicBloodPressure" placeholder="Enter Diastolic Blood Pressure" required step="any" value="{{ form_data['DiastolicBloodPressure'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="Triglycerides">Triglycerides:</label>
+                <input type="number" name="Triglycerides" placeholder="Enter Triglycerides level" required step="any" value="{{ form_data['Triglycerides'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="HbA1c">HbA1c:</label>
+                <input type="number" name="HbA1c" placeholder="Enter HbA1c level" required step="any" value="{{ form_data['HbA1c'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="LDLCholesterol">LDL Cholesterol:</label>
+                <input type="number" name="LDLCholesterol" placeholder="Enter LDL Cholesterol level" required step="any" value="{{ form_data['LDLCholesterol'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="HDLCholesterol">HDL Cholesterol:</label>
+                <input type="number" name="HDLCholesterol" placeholder="Enter HDL Cholesterol level" required step="any" value="{{ form_data['HDLCholesterol'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="ALT">ALT:</label>
+                <input type="number" name="ALT" placeholder="Enter ALT level" required step="any" value="{{ form_data['ALT'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="AST">AST:</label>
+                <input type="number" name="AST" placeholder="Enter AST level" required step="any" value="{{ form_data['AST'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="HeartRate">Heart Rate:</label>
+                <input type="number" name="HeartRate" placeholder="Enter Heart Rate" required step="any" value="{{ form_data['HeartRate'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="Creatinine">Creatinine:</label>
+                <input type="number" name="Creatinine" placeholder="Enter Creatinine level" required step="any" value="{{ form_data['Creatinine'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="Troponin">Troponin:</label>
+                <input type="number" name="Troponin" placeholder="Enter Troponin level" required step="any" value="{{ form_data['Troponin'] if form_data else '' }}">
+            </div>
+            <div class="form-group">
+                <label for="CReactiveProtein">C-Reactive Protein:</label>
+                <input type="number" name="CReactiveProtein" placeholder="Enter C-Reactive Protein level" required step="any" value="{{ form_data['CReactiveProtein'] if form_data else '' }}">
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <!-- Display prediction result -->
+        {% if prediction %}
+            <div class="result">
+                <p>Prediction: {{ prediction }}</p>
+            </div>
+        {% endif %}
+
+        <!-- Display error message -->
+        {% if error %}
+            <div class="error">
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
